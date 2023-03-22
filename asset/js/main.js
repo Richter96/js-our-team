@@ -79,7 +79,7 @@ for (let i = 0; i < teamMembers.length; i++) {
     console.log('ruolo', Thisteam.ruolo);
     console.log('foto', Thisteam.foto);
     const markupTeam = `
-    <div class="col">
+    <div class="col m-2">
         <div class="card">
             <img src="./asset/img/${Thisteam.foto}" class="card-img-top">
                 <div class="card-body">
