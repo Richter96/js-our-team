@@ -35,6 +35,12 @@ Scott Estrada	Developer	scott-estrada-developer.jpg
 Barbara Ramos	Graphic Designer	barbara-ramos-graphic-designer.jpg
  */
 
+
+
+
+
+
+
 //creiamo un array di oggetti con all'interno i membri del team
 const teamMembers = [
     {
@@ -73,21 +79,84 @@ const teamMembers = [
 //richiao elemento del dom nel quale inserire il markup
 const rowEl = document.querySelector('.row')
 
-for (let i = 0; i < teamMembers.length; i++) {
-    const Thisteam = teamMembers[i];
-    console.log('nome', Thisteam.nome);
-    console.log('ruolo', Thisteam.ruolo);
-    console.log('foto', Thisteam.foto);
+
+// RICHIAMO la funzione per generare le card
+generateCard(teamMembers, rowEl)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// creo un ciclo per recuperare ogni membro del team dall'array
+/* for (let i = 0; i < teamMembers.length; i++) {
+    const thisTeam = teamMembers[i];
+    console.log('nome', thisTeam.nome);
+    console.log('ruolo', thisTeam.ruolo);
+    console.log('foto', thisTeam.foto);
+
+    // creo un markup per ogni team
     const markupTeam = `
     <div class="col m-2">
         <div class="card">
-            <img src="./asset/img/${Thisteam.foto}" class="card-img-top">
+            <img src="./asset/img/${thisTeam.foto}" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">${Thisteam.nome}</h5>
-                    <p class="card-text">${Thisteam.ruolo}</p>
+                    <h5 class="card-title">${thisTeam.nome}</h5>
+                    <p class="card-text">${thisTeam.ruolo}</p>
                 </div>
         </div>
     </div>
     `
+    // stampo sul dom ogni membro del team
     rowEl.insertAdjacentHTML('beforeend', markupTeam)
+} */
+
+
+
+
+
+//---------------------------------------------- FUNZIONI
+
+function generateCard(team, domElement) {
+
+    for (let i = 0; i < team.length; i++) {
+        const thisTeam = team[i];
+        console.log(thisTeam)
+
+        // richiamo la funzone che mi crea la card
+        const markup = generateMarkup(thisTeam.nome, thisTeam.ruolo, thisTeam.foto)
+
+        // stampo nel dom ogni membro del team
+        domElement.insertAdjacentHTML('beforeend', markup)
+    }
 }
+
+
+// funzone per generare markup del team
+function generateMarkup(nome, ruolo, image) {
+
+    return `
+        <div class="col">
+            <div class="card">
+                <img src="./asset/img/${image}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">${nome}</h5>
+                        <p class="card-text">${ruolo}</p>
+                    </div>
+            </div>
+        </div>
+    `
+}
+
+
+
